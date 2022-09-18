@@ -1,0 +1,35 @@
+value - current_node_value
+// значение текущего узла в связанном списке
+
+n_list - combined_linked_list
+// связанный список, полученный из комбинации других связанных списков
+
+ind - index_within_dynamic_array
+// индекс внутри динамического массива
+
+num - numbers_to_exclude
+// числа, которые нужно исключить из списка
+
+op_dict - list_of_postfix_operations
+// список всех операций, доступных для вычисления постфиксного выражения
+
+first - string_beginning_char
+// символ из начала строки внутри deque
+
+last - string_end_char
+// символ из конца строки внутри deque
+
+val - desired_value
+// искомое значение в связанном списке
+
+hash_ - calculated_hash_value
+// вычисленное по хэш-функции значение
+
+slot - hash_table_slot_value
+// значение в слоте хэш-таблицы
+
+new_set - intersection_values_set
+// новый сет, содержащий пересекающиеся значения 2 других сетов
+
+res - is_bracket_list_balanced
+// bool значение, сбалансирован ли полученный список скобок
