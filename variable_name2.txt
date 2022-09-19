@@ -1,0 +1,36 @@
+// 6.1. Уровни абстракции (5)
+
+sum_total - total_sale_profit  // общая прибыль от промо-акции
+min_num - min_product_price  // минимальная цена продукта
+count - items_in_stock_count  // количество предметов на складе
+sum - daily_profit  // сумма выручки за день
+matrix - sales_calendar  // календарь продаж 
+
+
+// 6.2. Технические теримины (4)
+
+l, r - left_pointer, right_pointer  // левый и правый указатели
+xor_result  // результат вычисления исключающего или
+bootstrap_sample  // выборка для bootstrap метода
+iter_stock_items  // итератор для предметов на складе
+graph_node_value  // значение узла в графе 
+
+
+// 6.3  Учитывание контекста (3)
+
+// в контексте функции max_area - максимальная площадь
+height - высота
+length - ширина
+
+// в контексте класса Сommodity
+stock_count  // текущее количество товара на складе
+price_before_discount  // цена товара без скидки
+
+
+// 6.4  Соответствие длине 8-20 символов (5)
+
+d_nums - used_nums_table // хэш-таблица c ранее использованными цифрами
+res - max_subarr_product  // максимальное произведение в подмассиве
+mid - middle_point  // средняя позиция в листе (для бинарного поиска)
+path_to_client_data_file - client_data_path  // путь до файла с данными клиента
+longest_common_string - common_text  // общая подстрока для 2 строк
