@@ -1,0 +1,23 @@
+table - two_dim_matrix  // название для двумерного массива
+
+string1 - first_string  // название для первой из двух строчек текста
+
+pointer_l  - left_pointer  // левый указатель для бинарного поиска в массиве
+
+delta_time - time_delta_sec  // время начала отсчета в секундах
+
+len_ - arr_length  // длина массива вместо схожего с функцией len()
+
+total_votes - votes_total  // общее количество голосов
+
+operations_list - operations_dict  // исправление, на самом деле операции хранятся в словаре
+
+distance - distance_km  // дистанция в километрах
+
+num_panel - panel_index  // цифровой индекс на панеле из цифровой
+
+index, index_value - index, string_value  // более различимая пара, индекс, и текст, который хранится по индексу 
+
+for ind1 in range(n) - for first_index in range(n)  // замена цифры в названии индекса  
+
+m_votes - votes_average  // среднее количество голосов
