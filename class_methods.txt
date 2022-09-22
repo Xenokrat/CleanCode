@@ -1,0 +1,28 @@
+DataHandler - Reader  // класс для загрузки файлов .csv в дата-фреймы
+
+BrandHandle - Brand  // класс для обработки названий клиентских брендов 
+
+CommonWordsList - WordsParser  // класс для обработки слов в предложениях и поиска общий слов
+
+Worker - DatabaseConnector  // класс для обращения к базе данных и обработке обрывов
+
+Refresh - ViewRefresher  // класс для обновления вью в базе данных
+
+
+self.store, self.current_store - self.current_store // одинаковый атрибут магазина назывался по-разному в разных классах для обработки разных интернет-магазинов
+
+def start_parce(),  def parcing() - def parse()  // метод парсинга назывался по-разному в разных классах для обработки разных интернет-магазинов
+
+def load_client_products(), def get_db_products() - load_client_products() и load_db_products() 
+//  одинаковые по логике меоды для загрузки данных от клиента, и из базы данных назвать одинаково
+
+def get_token(), def recive_token() - def get_token  // метод для получения токена в разных классах
+
+def tokenize_words(words), def make_tokens(words) - def make_tokens(words) 
+// метод для получения токенов (отдельных слов) из текста назывался по-разному в классах работающих с разными текстами
+
+def apply_regex(), def use_regex_template - def apply_regex()
+// метод для обработки текста регулярными выражениями назывался по-разному в классах работающих с разными текстами
+
+self.price, self.current_price - self.current_price  
+// атрибут цены в родительском классе Item и подклассе Keyboard назывался по-разному, хотя имел один смысл
