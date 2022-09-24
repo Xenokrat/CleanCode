@@ -1,0 +1,31 @@
+tokenize(text) - tokenize_prod_name(text)  // разбить название продукта на токены
+
+max_set_length(set) - find_longest_set(set)  // возвращает сет с наибольшим числом элементов
+
+filter_df_by_length_of_sets(DataFrame) - 
+// находит элементы в столбце дата-фрейма, наиболее совпадающие по количеству слов с словами в другом столбце,
+// оставляет в дата-фрейме только такие элементы 
+разбить на 2:
+find_matching_names(df) // найти наиболее совпадающие по количеству слов с словами в другом столбце
+filter_df_by_match(df) // фильтрует дата-фрейм на месте его по предыдущему методу
+
+max_len_str(list[text]) - find_longest_str(list[text])  // находит самую длинную строчку
+
+record_report() - record_to_csv()  // метод в классе Report, записывает результат в .record_to_csv
+
+longest_common_string(str1, str2) - find_matching_str(str1, str2)  // находит наиболее совпадающие по подстрочкам тексты
+
+make_pretty_str(text)  // метод подготавливает строки к дальнейшей обработке, разбить на методы:
+lower_str(text)            // 1. сделать все буквы строчными
+remove_punctuation(text)   // 2. удалть все знаки препинания
+add_space_after_num(text)  // 3. добавить пробел после цифр, если его нет
+
+handle_barcodes(text) - record_barcodes(text)  // записать баркоды в аттрибут класса
+
+search_biggest(nums) - find_biggest_num(nums)  // находит наибольшее число
+
+make_parents(nodes) - find_parent_nodes(nodes)  // в классе Graph находит для всех узлов родительские узлы
+
+max_profit(list) - calc_max_profit(list)  // расчитывает максимальную прибыль по списку цен
+
+contains_duplicate(list) - is_contain_duplicates(list)  // возвращает True если список содержит дубликаты, иначе False
