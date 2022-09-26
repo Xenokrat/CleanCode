@@ -1,0 +1,52 @@
+// 1. Перегрузка конструкторов
+
+new_user: UserData
+new_user = UserData.get_from_json(data)  // получить данные о новом пользователе из json
+new_user = UserData.get_from_xml(data)   // получить данные о новом пользователе из xml
+
+user_info: User
+user_info = User.get_from_dictionary(info) // создать экземпляр User с информацией из словаря
+user_info = User.get_from_tuple(info)      // создать экземпляр User с информацией из кортежа
+
+product: ProductLanguage
+product = ProductLanguage.from_english(str)  // создать объект-продукт с названием на англ. языке
+product = ProductLanguage.from_russian(str)  // создать объект-продукт с названием на русском языке
+
+
+// 2. Реализация абстрактного класса Python
+// Никогда не использовал в своей практике, ниже пример, который воспроизводил в учебных целях.
+
+from abc import ABC, abstractmethod
+import pathlib
+
+
+class VideoExporter(ABC):
+    """Basic representation of video exporting codec."""
+
+    @abstractmethod
+    def prepare_export(self, video_data) -> None:
+        """prepare video data for exporting."""
+
+    @abstractmethod
+    def do_export(self, video_data) -> None:
+        """exports video data."""
+
+
+class HighQualityVideo(VideoExporter):
+    """High quality video export"""
+
+    def prepare_export(self, video_data) -> None:
+        print("Preparing high quality video data.")
+
+    def do_export(self, folder: pathlib.Path) -> None:
+        print(f"Exporting video data in high quality format to {folder}.")
+        
+
+class LowQualityVideo(VideoExporter):
+    """Low quality video export"""
+
+    def prepare_export(self, video_data) -> None:
+        print("Preparing low quality video data.")
+
+    def do_export(self, folder: pathlib.Path) -> None:
+        print(f"Exporting video data in low quality format to {folder}.")
