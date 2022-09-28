@@ -1,0 +1,146 @@
+// 1
+// было
+current_index == len(list_of_operations) - 1 
+// стало
+is_last_index = (current_index == len(list_of_operations) - 1)
+// присвоить логическую переменную is_last_index для повышения читаемости
+
+
+// 2
+// было, выбор операции по номеру из строкового значения
+op_num = int(command[0]: str)
+operations = {1: addition, 2: deletion,}
+operation = operations[op_num]
+
+// стало выбор операции по строковому значению без преобразования в тип int
+operations = {'1': addition, '2': deletion,}
+op_num = command[0]
+operation = operations[op_num]
+
+
+// 3
+// было - найти первую цифру в тексте, присвоить значение переменной first_digit, если уже не присвоено
+if char.isdigit() and first_digit is None:
+    first_digit = int(char)
+
+// стало - разбить на 2 логические переменные
+is_digit = char.isdigit()
+is_first_digit_empty = first_digit is None
+
+if (is_digit and is_first_digit_empty):
+    first_digit = int(char)
+
+
+// 4
+// было - условие, добавляющее в матрицу строки пока ее общей длины не будет достаточно
+while matrix_rows * matrix_cols < length:
+    matrix_rows += 1
+
+// стало - вынести условие в отдельную логическую переменную
+is_enough_matrix_size = matrix_rows * matrix_cols > length
+while not is_enough_matrix_size:
+    matrix_rows += 1
+
+
+// 5
+// задача на размещение танкового массива на карте. Было - проверяем, что массив из танков помещается на карту (входит по высоте и ширине)
+if h2 > h1 or w2 > w1:
+    return False
+
+// стало - использовать отдельные логические переменные для проверки
+is_fit_by_height = h1 <= h2
+is_fit_by_length = w1 <= w2
+if not (is_fit_by_height and is_fit_by_length):
+    return False
+
+
+// 6
+// было - data - массив из целочисленных значений
+full_sum = sum(data)
+return int(full_sum / 2)
+
+// стало - full_sum всегда будет только целочисленным, int // int возвращает целое число, убираем излишнее преобразование int() 
+full_sum = sum(data)
+return full_sum // 2
+
+
+// 7
+// было - при расчете факториала не было проверки, что n должно быть положительным
+def calc_factorial(n: int) -> int:
+    factorial = 1
+    for num in range(2, N + 1):
+        factorial *= num
+
+    return factorial
+
+// стало 
+def calc_factorial(n: int) -> int:
+    if n < 0:
+        raise ValueError
+    factorial = 1
+    for num in range(2, N + 1):
+        factorial *= num
+
+    return factorial
+
+
+// 8
+// было - использование магической строки, если нет победителя
+'no winner'
+
+// стало - использовать константу
+NO_WINNER_MESSAGE = 'no winner'
+
+
+// 9
+// было - использование несколько раз в теле функции "магического символа"
+if line[counter] == '*':
+    break
+bool_breaker_end = line[-1] == '*'
+
+// стало - добавление константы
+CHAR_BREAKER = '*'
+if line[counter] == CHAR_BREAKER:
+    break
+bool_breaker_end = line[-1] == CHAR_BREAKER
+
+
+// 10
+// было - использование несколько раз в теле функции "магического символа"
+if doors[step] == '0': ...
+doors[step - 1] = '1'
+
+// стало - добавление констант
+OPENED_DOOR = '1'
+CLOSED_DOOR = '0'
+
+if doors[step] == CLOSED_DOOR: ...
+doors[step - 1] = OPENED_DOOR
+
+
+// 11
+// было - длинное условие - проверка, можно ли в таблице вставить значение снизу
+// нельзя либо потому что ниже нет строки, либо значение уже вставлено
+if row_pos <= row - 1 and (row_pos + 1, col_pos) not in inserted_cells: ...
+
+// стало - используем отдельные логические переменные
+can_insert_below - row_position <= row - 1
+is_in_inserted_cells = (row_pos + 1, col_pos) in inserted_cells
+
+if can_insert_below and not is_in_inserted_cells: ...
+
+
+// 12
+// было - вычисление размера оплаты, возможно деление на 0, нет точного округления
+pay_rate = 0.8
+new_payment = payment / pay_rate
+
+// стало - добавилась проверка на деление на ноль, деление с округлением до 2 чисел посе запятой
+import decimal
+
+decimal.getcontext().prec = 2  # задаем точность для десятичных чисел - 2 знака после запятой
+pay_rate = 0.8
+if pay_rate <= 0:
+    return None
+
+new_payment = decimal.Decimal(payment) / decimal.Decimal(pay_rate)
