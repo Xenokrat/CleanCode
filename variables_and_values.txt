@@ -1,0 +1,181 @@
+// 1
+// было - переменная null_counter = 0 (считает сколько '0' надо убрать в начале строки) инициализирована не перед while
+null_counter = 0
+# ... код
+while null_counter < len(text):
+    # код
+
+// стало - переменная-счетчик непосредственно перед циклом
+null_counter = 0
+while null_counter < len(text):
+    # код
+
+
+// 2
+// было - в предыдущем примере не завершена работа с null_counter 
+// стало
+# ... код
+null_counter = None
+
+
+// 3
+// было - переменные инициализированы в начале функции
+def BiggerGreater()
+    suffix = None
+    prefix = None
+
+// стало - переменные перед использованием
+...
+suffix = None
+prefix = None
+if left < right:
+    suffix = input_list[ind:]
+    prefix = input_list[:ind - 1]
+
+
+// 4
+// было - переменные инициализированы в начале функции
+def ConquestCampaign():
+    days = 1
+
+// стало - переменная инициализирована перед использованием в цикле
+
+days = 1
+while empty_cells > 0:
+    days += 1
+    ...
+
+
+// 5
+// было - переменная subarray_start не сброшена после использования 
+subarray_start = None
+for ind in range(n - 1):
+    ...
+    if условие:
+        subarray_start = ind
+
+// стало - 
+subarray_start = None
+for ind in range(n - 1):
+    ...
+    if условие:
+        subarray_start = ind
+...
+subarray_start = None
+
+
+// 6
+// было - нет проверки, что значения переменных row и col должен оставаться всегда в пределах таблицы
+
+// стало - 
+assert row < matrix_height
+assert col < matrix_width
+
+
+// 7
+// было - итерируемый лист не задается непосредственно перед циклом
+new_circle = circle.copy()
+...
+...
+for ind, value in enumerate(new_circle):
+    ...
+
+// стало - лист задается непосредственно перед циклом
+new_circle: list = circle.copy()
+for ind, value in enumerate(new_circle):
+    ...
+
+
+// 8
+// было sum_dist = 0 - вычисляется в цикле
+sum_dist = 0
+    for i in range(N - 1):
+    ...
+// затем преобразуется в строковый формат
+sum_dist_str = str(sum_dist).replace("0", "").replace(".", "")
+
+// стало - необходимо присвоить 0 больше не используемой переменной sum_dist
+sum_dist = 0
+    for i in range(N - 1):
+    ...
+sum_dist_str = str(sum_dist).replace("0", "").replace(".", "")
+sum_dist = 0
+
+
+// 9
+// было
+ids_sorted = sorted(ids)
+correct_order = [ids_sorted.index(i) for i in ids]
+
+// стало - так как переменная ids_sorted больше не нужна дальше в коде
+ids_sorted = sorted(ids)
+correct_order = [ids_sorted.index(i) for i in ids]
+ids_sorted = None
+
+
+// 10
+// было логические переменные введены до места использования
+is_fit_by_height = h1 <= h2
+is_fit_by_length = w1 <= w2
+... # много кода
+if not (is_fit_by_height and is_fit_by_length):
+    return False
+
+// стало логические переменные введены на месте использования
+is_fit_by_height = h1 <= h2
+is_fit_by_length = w1 <= w2
+if not (is_fit_by_height and is_fit_by_length):
+    return False
+
+
+// 11
+// было - переменная result_str = '' инициализирована в начале функции
+
+// стало - переменная инициализирована непосредственно перед использованием 
+result_str = ''
+for word in split_s:
+    result_str += word[pointer]
+
+
+// 12
+// было - переменная des_time инициализирована далеко от места использования
+destination_time = traffic_light[0] + awaited_time
+...  # много кода
+residual = destination_time % tl_cycle
+
+// стало des_time инициализируется перед использованием
+destination_time = traffic_light[0] + awaited_time
+tl_cycle = red_time + green_time
+residual = destination_time % tl_cycle
+
+
+// 13
+// было - переменные инициализированы далеко от места использования
+day, next_day = date_creator.make_needed_dates(date)
+... # много кода
+postgres_queries.create_main_daily_view(day, next_day)
+
+// стало - инициализация непосредственно перед использованием
+day, next_day = date_creator.make_needed_dates(date)
+postgres_queries.create_main_daily_view(day, next_day)
+
+
+
+// 14
+// было - нет проверки на то, что переменная date_to_insert относится к datetime.datetime
+
+// стало - добавлена проверка
+assert isinstance(date_to_insert, datetime.datetime), f'{date_to_insert} is not datetime'
+
+
+// 15
+// было - переменная max_len после использования не сбрасывается
+max_len = -1
+for set_ in list_of_sets:
+    ...  # расчет сета с максимальной длиной
+
+// стало - сброс переменной max_len
+max_len = -1
+for set_ in list_of_sets:
+    ...  # расчет сета с максимальной длиной
+max_len = -1
