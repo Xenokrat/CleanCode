@@ -1,0 +1,342 @@
+// 1
+// парсинг команы из тестовой строки внутри метода который выполняет команду
+...
+operation_number = int(command[0])
+    if len(command) > 1:
+        argument = command[2:]
+...
+
+// стало - вынести все, связанное с парсингом в отдельный метод
+def parse_command(command: str) -> tuple:
+    operation_number = int(command[0])
+    if len(command) > 1:
+        argument = command[2:]
+        return operation_number, argument
+    return operation_number
+
+
+// 2
+// поиск с конца массива самого длинного не увеличивающегося подмассива (suffix)
+// было - поиск внутри другого метода
+...
+for ind in range(n - 1, 0, -1):
+        right = input_list[ind]
+        left = input_list[ind - 1]
+        if left < right:
+            prefix = input_list[:ind - 1]  # not include first_pivot
+            suffix = input_list[ind:]
+            first_pivot = left
+            break
+...
+
+// стало - вынести в отдельную функцию
+def find_prefix_suffix(n, input_list):
+    for ind in range(n - 1, 0, -1):
+        right = input_list[ind]
+        left = input_list[ind - 1]
+        if left < right:
+            prefix = input_list[:ind - 1]  # not include first_pivot
+            suffix = input_list[ind:]
+            first_pivot = left
+            return prefix, first_pivot, suffix
+        return ''  # empty string if there is not suffix
+
+
+// 3
+// внутри фукнции - выделение шаблона из текстовой строки (все символы между двумя "*")
+# calculate template
+    counter = 1
+    while counter < len(line):
+        if line[counter] == '*':
+            break
+        counter += 1
+    template = line[:counter]
+
+// стало - вынести в отдельную функцию
+
+
+// 4
+// внутри фукнции - расчет количества строк и столбцов для вмещения тестовой строки
+...
+no_spaces_str = s.replace(" ", "")
+length = len(no_spaces_s)
+length_sqrt = length ** 0.5
+matrix_rows = int(length_sqrt)
+matrix_cols = math.ceil(length_sqrt)
+...
+
+// стало - вынести в отдельный метод
+def calculate_matrix_size(s: str):
+    length = len(no_spaces_s)
+    length_sqrt = length ** 0.5
+    matrix_rows = int(length_sqrt)
+    matrix_cols = math.ceil(length_sqrt)
+    return matrix_rows, matrix_cols
+
+
+// 5
+// внутри фукнции - создание матрицы на основе данных matrix_rows, matrix_cols из предыдущего метода
+...
+s_matrix = []
+counter_start = 0
+    # make base matrix
+    for _ in range(matrix_rows):
+        counter_end = counter_start + matrix_cols
+        row_line = no_spaces_s[counter_start:counter_end]
+        s_matrix.append(row_line)
+        counter_start += matrix_cols
+...
+
+// стало - сгруппировать в отдельный метод
+def make_matrix(matrix_rows, matrix_cols, no_spaces_str):
+    s_matrix = []
+    counter_start = 0
+    for _ in range(matrix_rows):
+        counter_end = counter_start + matrix_cols
+        row_line = no_spaces_str[counter_start:counter_end]
+        s_matrix.append(row_line)
+        counter_start += matrix_cols
+    return s_matrix
+
+
+// 6
+// внутри фукнции - перенос матрицы из метода 5 в строковый формат
+s_t_matrix = []
+
+# transpose matrix to encode
+for col in range(matrix_cols):
+    line = ''
+    for row in range(matrix_rows - 1):  # leave the last row for later
+        line += s_matrix[row][col]
+    s_t_matrix.append(line)
+
+# adding characters from last row
+word_count = 0
+for char in s_matrix[-1]:
+    s_t_matrix[word_count] += char
+    word_count += 1
+
+res = " ".join(s_t_matrix)
+
+// стало - группировка функционала в отдельную функцию
+def matrix_to_str(matrix_rows, matrix_cols, s_matrix):
+    s_t_matrix = []
+
+    # transpose matrix to encode
+    for col in range(matrix_cols):
+        line = ''
+        for row in range(matrix_rows - 1):  # leave the last row for later
+            line += s_matrix[row][col]
+        s_t_matrix.append(line)
+
+    # adding characters from last row
+    word_count = 0
+    for char in s_matrix[-1]:
+        s_t_matrix[word_count] += char
+        word_count += 1
+
+    return " ".join(s_t_matrix)
+
+
+// 7
+// Было - внутри метода код переносит строку, если ее длина первышает заданный размер, на следующую строку
+...
+while words_list:
+    word = words_list.pop(0)
+
+    # if word longer than length
+    if len(word) > length and len(line) < 1:
+        line = [word[:length], '\n']
+        words_list = [word[length:]] + words_list
+        break
+
+    current_length += len(word)
+
+    if current_length <= length:
+        line.append(word)
+        if len(line) > 1:
+            current_length += 1  # adding "space"
+    else:
+        line.append('\n')
+        words_list = [word] + words_list
+        break
+...
+
+// стало - указанной выше должно быть в ответственности отдельного метода
+def break_the_line(words_list: str):
+    current_length = 0
+    line = []
+
+    while words_list:
+        word = words_list.pop(0)
+
+        # if word longer than length
+        if len(word) > length and len(line) < 1:
+            line = [word[:length], '\n']
+            words_list = [word[length:]] + words_list
+            break
+
+        current_length += len(word)
+
+        if current_length <= length:
+            line.append(word)
+            if len(line) > 1:
+                current_length += 1  # adding "space"
+        else:
+            line.append('\n')
+            words_list = [word] + words_list
+            break
+
+        return line
+
+
+// 8
+// было - переменная, обозначающая размер скидки, задана как переменная класса
+class Item:
+    pay_rate = 0.8
+    ...
+
+// стало - задавать переменную в конструкторе для экземпляров класса с значением по умолчаиню
+class Item:
+    def __init__(self, name: str, price: float, quantity=0, pay_rate=0.8):
+        ...
+
+
+// 9
+// было - визуализация реализована внутри метода, который считает p-value методом bootstrap
+# Визуализация
+plt.hist(pd_boot_data[0], bins=50)
+plt.style.use('ggplot')
+plt.vlines(ci, ymin=0, ymax=boot_len / 17, linestyle='--', colors='Blue')
+plt.xlabel('boot data')
+plt.ylabel('frequency')
+plt.title('Histogram of boot_data')
+plt.show()
+
+// стало - сгруппировать и реализовать визуализацию внутри отдельного метода
+def boot_vizualization(pd_boot_data: DataFrame, ci: float, boot_len: int) -> None:
+    plt.hist(pd_boot_data[0], bins=50)
+    plt.style.use('ggplot')
+    plt.vlines(ci, ymin=0, ymax=boot_len / 17, linestyle='--', colors='Blue')
+    plt.xlabel('boot data')
+    plt.ylabel('frequency')
+    plt.title('Histogram of boot_data')
+    plt.show()
+
+
+// 10
+// было - глобальные переменные используются в симуляции тестового редактора, чтобы отслеживать текущую строку, список примененных операций
+def undo(*args):
+    global current_str
+    global list_of_operations
+    ...
+
+// стало - каждый метод принимает переменные current_str, list_of_operations, current_index
+// и возвращает эти же current_str, list_of_operations, current_index, например
+def undo(current_str, list_of_operations, list_of_operations, *args):
+
+    if current_index <= 0:
+        return current_str
+
+    current_index -= 1
+    current_str = list_of_operations[current_index]
+
+    return current_str, list_of_operations, list_of_operations
+
+
+// (не мой код)
+// 11
+// proxy_metadata = sa.MetaData()  создается как глобальная переменная в модуле
+proxy_metadata = sqlalchemy.MetaData()
+...
+
+// стало
+def create_proxy():
+    proxy_metadata = sqlalchemy.MetaData()
+    proxy = sa.Table(
+        'proxy', proxy_metadata
+        sa.Column('proxy_id', sa.Integer, primary_key=True),
+        sa.Column('ip', postgresql.INET, nullable=False),
+        sa.Column('port', sa.Integer, nullable=False),
+        sa.Column('login', sa.String(length=64), nullable=True),
+        sa.Column('password', sa.String(length=64), nullable=True),
+        sa.Column('last_used', sa.DateTime, nullable=True),
+        schema='proxy'
+    )
+    return proxy
+
+
+// 12
+// exceptions_to_ignore - игнорируемые исключения создавались как глобальная переменая, но используются только в одной функции
+exceptions_to_ignore = (requests.exceptions.ProxyError,
+                        requests.exceptions.ConnectionError,
+                        psycopg2.OperationalError,
+                        BlockingIOError)
+
+// стало - создать exceptions_to_ignore внутри используемой функции
+def before_send(event, hint):
+    exceptions_to_ignore = (
+        requests.exceptions.ProxyError,
+        requests.exceptions.ConnectionError,
+        psycopg2.OperationalError,
+        BlockingIOError
+    )
+    if 'exc_info' in hint:
+        exc_type, exc_value, tb = hint['exc_info']
+        if isinstance(exc_value, exceptions_to_ignore):
+            return None
+    return event
+
+
+// 13
+// переменная platform_names задана как глобальная в модуле с одним классом
+platform_names = (... список площадок ...)
+
+// создать platform_names как переменную класса для отправки отчетов
+
+class ReportSender:
+    PLATFORM_NAMES = (... список площадок ...)  # PLATFORM_NAMES используется как константа
+    ...
+
+
+// 14 
+// настройка логирования происходит на уровне модуля и перемежается кодом
+# логирование
+logging.basicConfig(
+    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+)
+...
+log = logging.getLogger('pepsi_category_daily')
+...
+log.setLevel('INFO')
+
+// настроить логирование в пределах одной функции
+def setup_loggin():
+    logging.basicConfig(
+        format='%(asctime)s %(levelname)s %(name)s %(message)s'
+    )
+    log = logging.getLogger('pepsi_category_daily')
+    log.setLevel('INFO')
+    return log
+
+
+// 15
+// метод send_report содержит наполнение содержимого письма и его отправку
+
+// выделить все что относится к содержимому письма в отдельный метод
+def fill_email(self):
+    text = ''
+        for file_name in self.writers:
+            if self.writers[file_name]['count'] > 1:
+                text += f'<a href="https://{file_name}">' \
+                        f'{self.writers[file_name]["platform"]} - {self.writers[file_name]["count"]}</a><br>'
+            else:
+                text += f'<a href="https://{file_name}">' \
+                        f'{self.writers[file_name]["platform"]}</a><br>'
+
+    message = MIMEText(text, 'html')
+    message['From'] = SENDER_ADDR
+    message['To'] = recipient_address
+    message['Date'] = formatdate(localtime=True)
+    message['Subject'] = f'Отчеты за {self.date_start} - {self.date_end}'
+    return message
