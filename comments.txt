@@ -1,0 +1,154 @@
+// Доп. комментарии
+// Добавление комментариев
+// 1
+// комментарий - в симуляции текстового редактора, если было редактирование после undo - очиститить список предыдущих операций
+# clear list of operations if edit after undo
+if current_index != len(list_of_operations) - 1:
+    list_of_operations = [list_of_operations[current_index]]
+    current_index = 0
+
+// 2
+// комментарий - найти первый элемент в суффиксе (second_pivot)
+// который больше опорного (first_pivot)
+
+# find first from end element in suffix that bigger than pivot
+second_pivot = 0
+len_suffix = len(suffix)
+for j in range(len_suffix - 1, 0, -1):
+    if suffix[j] > first_pivot:
+        second_pivot = j
+        break
+
+// 3
+// комментарий - (в реализации фильтра Блума)
+// устанавливаем значение битового массива равное 1 по вычесленным
+// по хэш-функциям значениям
+
+# set calculated by hash position within bitearray to 1
+self.bitarray = self.bitarray | 1 << hash_first_result
+self.bitarray = self.bitarray | 1 << hash_second_result
+
+
+// 4
+// комментарий - (в реализации фильтра Блума)
+// проверяем, записано ли значение 1 внутри битового массива
+// по значениям хэш-функций
+
+return all([
+    # check if there is 1-value in bitarray position
+    # calculated by hash-functions
+    self.bitarray & 1 << hash_first_result,
+    self.bitarray & 1 << hash_second_result
+])
+
+
+// 5
+// комментарий - проверка, что n строковых шаблонов без остатка могуг
+// поместиться в проверяемую строку + добавить логическую переменную
+// было
+if (len(line) - 1) % template_len != 0:
+    return False
+
+// стало
+# check in n templates can completely fit into the line
+is_templates_complete_fit = (len(line - 1)) % template_len == 0
+if not is_templates_complete_fit:
+   return False
+
+
+// 6
+// комментарий - добавляем сначала первую половину массива
+// затем вторую половину массива в обратном порядке
+
+# adding first part of the array
+while counter <= mid:
+    result.append(tele_deque.popleft())
+    counter += 1
+
+# adding second part of the array in reversed order
+while tele_deque:
+    result.append(tele_deque.pop())
+return Tele
+
+
+// 7
+// в задаче про можно ли сортировать массив, сдвигая элeменты по 3
+// добавить комментарий, указывающий, что решение по количеству инверсий
+// с указанием что считать инверсией
+
+# if count of inversions (a[i] > a[j] and i < j) is odd
+# cannot sort this
+inversions = count_inversions(n, data)
+res = inversions % 2 == 0
+return res
+
+
+// Убрать комментарий, улучшить код
+// 1
+// было - 2 плохо читаемых логических условия и комментарий для пояснения
+# check if linked lists have same length, or it's empty lists
+if l_list1.len() != l_list2.len() or (l_list1.len() == 0):
+    return None
+
+// стало - использование логических переменных без комментария
+is_equal_length = l_list1.len() != l_list2.len()
+is_list_empty = l_list1.len() == 0
+if not is_queal_length or is_list_empty:
+   return None
+
+
+// 2
+// было - комментарий, что код ниже выбирает большее/меньшее значения и присваивает
+// их соответствующим переменным
+
+# 1. Calculate which number is bigger
+if s1 == s2:
+    return '0'
+if s1 > s2:
+    first_num, second_num = s1, s2
+else:
+    first_num, second_num = s2, s1
+
+// стало - убрать лишний комментарий, сделать код более очевидным/читаемым
+if s1 == s2:
+   return '0'
+first_num = max(s1, s2)
+second_num = min(s1, s2)
+
+// 3
+// было - комментарий, указывающий что далее код, составляющий список из str знчений
+# back to list of strings
+res = []
+for pair in sorted_items:
+    product = pair[0]
+    count = str(pair[1])
+    product_count = product + ' ' + count
+    res.append(product_count)
+return res
+
+// стало - вынести в отдельную функцию код, читаемость за счет названия функции
+def tuples_to_list_of_str(sorted_items: List[tuple]]) -> List[str]:
+    list_of_str = []
+    for pair in sorted_items:
+        product = pair[0]
+        count = str(pair[1])
+        product_count = product + ' ' + count
+        list_of_str.append(product_count)
+    return list_of_str
+
+return tuples_to_list_of_str(sorted_items)
+
+
+// 4
+// было - комментарий, указывающий что дальше идет проверка на то, что массив
+// помещается внутри другого массива (карты)
+
+# check if array bigger than map
+if h2 > h1 or w2 > w1:
+    return False
+
+// стало - заменить комментарий на правильно называнные логические переменные
+is_fit_by_height = h2 <= h1
+is_fit_by_width = w2 <= w1
+if not (is_fit_by_height and is_fit_by_width):
+   return False
