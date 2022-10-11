@@ -1,0 +1,141 @@
+// 1
+// предупреждающий комментарий к функции main
+# Скорость выполнения main зависит от размеров файлов clients_titles.xlsx и base_titles.xlsx
+# желательно, чтобы произведение строк в обоих файла не превышало ~1000, в другом случае
+# время резко возрастает
+
+def main(): 
+    data = MultipleBrands(path_to_client_data="sample_data/client_titles.xlsx",
+                          path_to_base_data="sample_data/base_titles.xlsx",)
+    res = data.make_result_df()
+    res.to_excel('test_output.xlsx')
+
+
+// 2
+// поясняющий комментарий к функции редактирования в симуляции текстового редактоа
+
+def addition(*args):  
+# args принимает преобразованные элементы из текстовой строки: 1 - номер операции,
+# и далее аргуметы, соответствующие выполняемой операции
+    ...
+
+
+// 3
+// поясняющий комментарий к задаче реализации текстового редактора
+def BastShoe(command: str) -> str:
+    global current_str        # условия задачи требуют использования глобальных переменных
+    global list_of_operations # для передачи информации между функциями реализации редактора
+    global current_index
+
+
+// 4
+// проясняющий комментарий к задаче, можно ли сортировать массив одним из 2 способов
+
+for ind in range(n - 1):
+    if f[ind] > f[ind + 1]:
+        subarray_start = ind
+        break
+
+# если на входе получен уже отсортированный массив, то считается, что его нельзя отсортировать
+if subarray_start is None:
+    return False
+
+// 5
+// комментарий TODO, показывает как следует изменить класс LSC
+
+class LSC:
+    # TODO: класс LSC должен только определять наибольшую общую строку,
+    # реализацию загрузки данных нужно вынести отдельно
+
+    def __init__(self, path_to_client_data, path_to_base_data):
+        self.client_data = self.make_client_data(
+            path_to_client_data
+        )
+        self.base_sku = self.make_base_sku(
+            path_to_base_data
+        )
+    ...
+    def make_client_data(path):
+        ...
+
+    def make_base_data(path):
+        ...
+
+    def longest_common_string(self, str1: str, str2: str) -> list[str]:
+        ...
+
+
+// 6
+// комментарий указывает, почему важно добавить 1 к текущей длине текста
+
+if current_length <= length:
+    line.append(word)
+    # если строка не закончилась, в длине текста нужно учесть пробел между словами
+    if len(line) > 1:
+        current_length += 1 
+
+
+// 7
+// комментарий указывает на специфику решения задачи
+
+for traffic_light in track:
+    # нужно учесть, что если светофор находится за пределами
+    # точки назначения, его не следует обрабатывать
+    if traffic_light[0] >= length:
+       break 
+
+// 8
+// комментарий TODO
+
+# TODO: создать отдельную функцию, возвращающую SQL запросы
+# при необходимости добавляя к запросу аргументы:
+# def create_query(*args):
+
+def drop_main_daily_view() -> str:
+    return '''
+        SQL-query
+    '''
+
+def create_ids_category_view(day_str: str, next_day_str: str) -> str:
+    return f'''
+        SQL-query-with-args
+    '''
+
+
+// 9
+// предупреждающий комментарий о необходимости использовать сертификат
+
+# необходимо указать правильный путь к сертификату на локальном компьютере
+# без сертификата подключение к базе данных будет работать некорректно
+CA_CERT = r"C:/YandexInternalRootCA.crt"
+
+
+// 10
+// предупреждающий комментарий при попытке положить данные в базу
+
+# если по какой-либо причине вью не было обновлено,
+# есть риск положить в таблицу данные за прошлые дни повторно
+# поэтому включена доп. проверка
+assert day not in inserted_dates, f'date {day} already in Clickhouse'
+
+
+// 11
+// проясняющий комментарий по причине использования frozenset
+
+def tokenize(self, text) -> frozenset:
+    text = self.make_pretty_str(text)
+    text = text.split(' ')
+
+    # необходимо вернуть frozenset вместо set, так как в дальнейшем
+    # pandas делает join по столбцу с этими данными (необходим неизменяемый тип)
+    return frozenset(text)
+
+
+// 12
+// представление намерений + TODO комментарии
+
+# будем удалять элемент в хэш таблице, чтобы вставить новый
+# только при полном заполнении
+# TODO: реализовать очистку хэш-таблицы при заполнении до указанного %
+pos = self.delete_least_used()
+
