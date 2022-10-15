@@ -1,0 +1,245 @@
+// 1
+// избыточный docstring
+def rotate_queue(qu: Queue, n: int) -> Queue:
+    """
+    :param qu: Queue object
+    :param n: number of shifts
+    :return: rotated Queue
+    """
+
+    for _ in range(n):
+        temp = qu.dequeue()
+        qu.enqueue(temp)
+    return qu
+
+// исправить названия параметров, убрать лишнюю документацию
+
+def rotate_queue(queue: Queue, shifts_number: int) -> Queue:
+    for _ in range(shifts_number):
+        temp = queue.dequeue()
+        queue.enqueue(temp)
+    return queue
+
+
+// 2
+// избыточный комментарий, код далее достаточно понятный
+def eval_postfix_expression(expr: str):
+    # create stacks
+    s1 = Stack()
+    s2 = Stack()
+
+// стало
+def eval_postfix_expression(expr: str):
+    s1 = Stack()
+    s2 = Stack()
+
+
+// 3
+// комментарий не относитсится непосредственно к коду под ним
+// не содержит важной информации, лучше убрать, сделать названия более ясными
+
+# prepare to fill s1
+expr_list = expr.split()
+expr_len = len(expr_list)
+
+// стало 
+commands_list = expression.split()
+commands_len = len(commands_list)
+
+
+// 4
+// избыточный комментарий (названия переменной достаточно информативно)
+// комментарий за фигурной скобкой
+operation_matching = {
+    '+' : lambda x, y: x + y,
+    '-' : lambda x, y: x - y,
+    '*' : lambda x, y: x * y,
+    '/' : lambda x, y: x / y,
+    '%' : lambda x, y: x % y,
+    '**': lambda x, y: x ** y,
+} # list of all operations
+
+// стало - убрать комментарий
+operation_matching = {
+    '+' : lambda x, y: x + y,
+    '-' : lambda x, y: x - y,
+    '*' : lambda x, y: x * y,
+    '/' : lambda x, y: x / y,
+    '%' : lambda x, y: x % y,
+    '**': lambda x, y: x ** y,
+}
+
+
+// 5
+// избыточный комментарий (docstring), название функции, параметры очевидно отражают
+// смысл функции
+def issubset(self, set2) -> bool:
+    """Return True if set2 is a subset of current set, else return False
+
+    Args:
+        set2 (PowerSet): another instance of PowerSet
+        
+    Returns:
+        bool: True if set2 is a subset of current set, else return False
+    """
+    return all(
+        item in self.container 
+        for item in set2.container
+    )
+
+// стало - сократить docstring 
+def issubset(self, other_set: PowerSet) -> bool:
+    return all(
+        item in self.container 
+        for item in set2.container
+    )
+
+
+// 6
+// аналогично предыдущему пункту - излишний docstring для очевидной функции
+def size(self) -> int:
+    """
+    Returns:
+        int: length of set
+    """
+    return len(self.container)
+
+// стало - убрать
+def size(self) -> int:
+    return len(self.container)
+
+
+// 7
+// docstring и комментарий вместе избыточны, достаточно сообщить информацию
+// что put будет удалять наименее используемый ключ, если места больше нет
+def put(self, key: str, value: str) -> int:
+    """Put key/value pair in arrays, 
+       delete least used key if nessesary
+
+    Args:
+        key (str): key text
+        value (str): value text
+
+    Returns:
+        int: index where key/value inserted
+    """
+
+    ...
+
+    # call delete least used key if cannot put
+    pos = self.delete_least_used()
+    ...
+
+// стало
+def put(self, key: str, value: str) -> int:
+    """
+    put key/value in array, 
+    delete least used key if there is not space left
+    """
+
+    ...
+
+    pos = self.delete_least_used()
+    ...
+
+// 8
+// было - переменная очевидно указывает, что проверяется условие удаления первого значения
+# break if we already deleted first value
+if first_value_deleted: 
+    return None
+
+// стало - убрать комментарий
+if first_value_deleted: 
+    return None
+
+
+// 9
+// неинформативный комментарий, не содержит прямой информации о последующем коде
+# if it's head
+elif (node.value == val) and (node == self.head):
+    self.head = node.next
+    self.head.prev = None
+    first_value_deleted = True
+
+// стало - сделать комментарий информативным
+# если значение узла находится в head, его нужно отличным от остальных узлов способом
+elif (node.value == val) and (node == self.head):
+    self.head = node.next
+    self.head.prev = None
+    first_value_deleted = True
+
+
+// 10
+// было - комментарий обозначает, что дальнейший код предназначен для обработки
+// слов, которые длиннее заданной длины строки
+# if word longer than length
+if len(word) > length:
+    ...
+
+// стало - создать логическую переменную, которая будет давать информацию вместо комментария
+// уточнить название переменной, обозначающей длину строки
+is_word_longer_than_line = len(word) > line_length
+if len(is_word_longer_than_line) > line_length:
+    ...
+
+
+// 11
+// комментарий указывает, что делает переменная
+// (время, потраченное на ожидание пока горит красный свет)
+awaited = 0  # time spend on red
+
+// стало - название переменной указывает, что она делает
+time_on_red_light = 0
+
+// 12
+// название переменной уже сообщает информацию, которая указана в комментарии
+// то есть комментарий избыточный
+# calculating total distance 
+total_distance = 0
+...
+
+// стало - убрать лишний комментарий
+total_distance = 0
+...
+
+
+// 13
+// комментарий под названием функции не сообщает никакой полезной информации
+// и дублирует то, что уже сообщается в названии функции
+def make_circle_indexes(matrix: list[list[str]],
+                        rows: int, cols: int, shift: int) -> list[list]:
+    # rotate matrix
+    ...
+
+// стало - изменить комментарий, чтобы он сообщал намерения, которые реализует функция
+def make_circle_indexes(matrix: list[list[str]],
+                        rows: int, cols: int, shift: int) -> list[list]:
+    # для каждого из "колец" матрицы относительно ее центра
+    # создадим отдельный список значений и будем сдвигать его на указанное чило (shift)
+    ...
+
+
+// 14
+// комментарий указывает, что код в дальнейшем указывает на 
+// расположение позиции, что не сообщает никакой доп. информации
+# assert position
+for i in range(0, battalion_size, 2):
+    captured_cells.add((battalion[i], battalion[i + 1]))
+
+// стало - перепишем комментарий, чтобы сделать его более информативным
+# код далее создает список точек, изначально занятых батальоном 
+# по координатам (x, y)
+for i in range(0, battalion_size, 2):
+    captured_cells.add((battalion[i], battalion[i + 1]))
+
+
+// 15
+// название функции достаточно очевидно указывает на ее назначение
+// комментарий над функцией избыточный
+# find if we can sort by reversing subarray
+def can_reverse_sort(f: list[int], n: int) -> bool:
+    ...
+
+// стало - без комментария
+def can_reverse_sort(f: list[int], n: int) -> bool:
+    ...
